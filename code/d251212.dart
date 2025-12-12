@@ -54,4 +54,25 @@ void main() async {
     final studentScore = StudentScore(erum, sutjaJeumSoo);
     haksangdeul.add(studentScore);
   }
+
+  print("어떤 학생의 점수를 확인하시겠습니까?");
+  String sayongjaIpRuk = stdin.readLineSync()!;
+  // haksangdeul 이라는 리스트에 담긴 학생 이름과 sayongjaIpRuk 이라는 입력값과 비교해서
+  // 있는지 여부 확인
+  // haksangdeul : [StudentScore("홍길동", 90), StudentScore("김철수", 80)]
+
+  StudentScore? chatneunHaksang = null;
+
+  for (StudentScore haksang in haksangdeul) {
+    if (sayongjaIpRuk == haksang.name) {
+      chatneunHaksang = haksang;
+      break;
+    }
+  }
+
+  if (chatneunHaksang == null) {
+    print("잘못된 학생이름을 입력하였습니다");
+  } else {
+    print("이름 : ${chatneunHaksang.name} 점수 : ${chatneunHaksang.point}");
+  }
 }
